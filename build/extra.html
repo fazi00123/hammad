@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('modalSlider', () => ({
+        open: false,
+        init() {
+          let swiper;
+          this.$watch('open', (value) => {
+            if (value) {
+              swiper = new Swiper('.swiper', {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                  delay: 0,
+                  disableOnInteraction: false,
+                },
+                speed: 3000,
+              });
+
+              const swiperEl = document.querySelector('.swiper');
+              swiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
+              swiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
+            }
+          });
+        }
+      }))
+    });
+  </script>
+
+</head>
+<body class="bg-gray-800"  x-data="modalSlider()" x-init="init()">
+
+<!-- New animated button -->
+<a href="#">
+  <button @click="open = true"
+    class="group relative overflow-hidden text-white text-base lg:text-lg border border-white rounded-md py-2 px-6 transition-all duration-300 bg-transparent hover:bg-white focus:outline-none">
+    
+    <!-- Default text -->
+    <span class="transition-opacity duration-300 group-hover:opacity-0">View All</span>
+    
+    <!-- Hover icon -->
+    <span class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+      <i class="fa-solid fa-arrow-right text-black text-xl lg:text-2xl"></i>
+    </span>
+  </button>
+</a>
+
+
+
+  <!-- Modal -->
+  <div x-show="open" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50"
+       x-transition>
+    <div class="bg-white w-3/4 max-w-4xl p-5 rounded-lg relative">
+      <!-- Close button -->
+      <button @click="open = false" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
+
+      <!-- Swiper Slider -->
+      <div class="swiper mt-6 cursor-pointer">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide bg-blue-200 p-8 rounded-lg text-center hover:bg-blue-300 transition"
+               @click="alert('Item 1 Clicked')">Item 1</div>
+          <div class="swiper-slide bg-green-200 p-8 rounded-lg text-center hover:bg-green-300 transition"
+               @click="alert('Item 2 Clicked')">Item 2</div>
+          <div class="swiper-slide bg-red-200 p-8 rounded-lg text-center hover:bg-red-300 transition"
+               @click="alert('Item 3 Clicked')">Item 3</div>
+          <div class="swiper-slide bg-yellow-200 p-8 rounded-lg text-center hover:bg-yellow-300 transition"
+               @click="alert('Item 4 Clicked')">Item 4</div>
+          <!-- Add more items as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <button 
+  x-data="{ show: false }"
+  x-init="window.addEventListener('scroll', () => show = window.scrollY > 300)"
+  x-show="show"
+  @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+  class="fixed bottom-6 right-6 z-50 bg-[#1DBF73] text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300"
+  aria-label="Scroll to top"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+</body>
+</html>

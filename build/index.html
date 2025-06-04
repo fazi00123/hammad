@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    
+      <!-- SplitType (for splitting text into words/chars easily) -->
+      <script src="https://unpkg.com/split-type"></script>
+
+      <!-- Swiper testimonial JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- oval slider js  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
+
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/> -->
+
+
+
+     <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-down {
+      animation: slideDown 1s ease-out;
+    }
+  </style>
+
+
+</head>
+<body class="overflow-x-hidden" x-data="modalSlider()" x-init="init()">
+
+    <section class="bg-[#1A1A1A] xl:px-20 lg:px-10 px-5">
+ 
+  <div class="md:hidden flex justify-between items-center py-4">
+    <h1 class="text-white text-lg">Hammad Ahmad</h1>
+    <button id="menu-toggle" class="text-white focus:outline-none">
+      <!-- Hamburger Icon -->
+      <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <!-- Close Icon -->
+      <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Responsive Nav Menu -->
+  <div id="mobile-menu" class="hidden md:block animate-slide-down">
+    <nav class="py-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
+        <div class="md:block hidden">
+          <a href="">
+            <h1 class="text-white">Hammad Ahmad</h1>
+          </a>
+        </div>
+        <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 items-start md:items-center">
+          <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10">
+            <li class="text-white hover:font-bold text-lg"><a href="#work">Work</a></li>
+            <li class="text-white hover:font-bold text-lg"><a href="#services">Services</a></li>
+            <li class="text-white hover:font-bold text-lg"><a href="#testimonial">Testimonials</a></li>
+          </ul>
+          <div>
+            <a href="#contact">
+              <button class="button3 text-white border border-white rounded-md py-2 px-5">Contact</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      hamburgerIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  </script>
+
+<!--hero heading  -->
+   <div id="hero-heading" class="xl:py-28 md:py-16 py-10">
+   <div class="lg:w-3/4 w-full">
+  <h1 class="text-white font-light 2xl:text-9xl xl:text-[90px] lg:text-7xl md:text-6xl text-[40px] md:leading-[79px] lg:leading-[85px] xl:leading-[100px] 2xl:leading-[145px] items-center gap-2">
+    <span class="text-[#5F5F5F]">Hi, </span>
+    <span class="text-[#5F5F5F] items-center gap-2">
+      I’m 
+      <img id="profile-img"
+        src="./assets/img/headingimg.jpg" 
+        alt="Profile" 
+        class="w-16 h-10 md:w-20 md:h-14 xl:w-36 xl:h-24 2xl:w-44 2xl:h-28 object-cover inline-block"
+      /> 
+    </span>
+    
+     Hammad Website Designer
+    <span class="text-[#5F5F5F]">Based in Pakistan</span>
+  </h1>
+</div>
+
+    <div class="pt-16">
+        <a href="">
+        <button class="button2 text-white 2xl:text-2xl bg-[#D94100] border border-[#D94100] py-2 px-3 rounded-md text-lg">Hire me</button>
+        </a>
+    </div>
+   </div>
+
+   </section>
+
+
+   <!-- work section  -->
+
+   <section id="work" class="bg-[#232323] xl:px-20 lg:px-10 px-5 xl:py-28 md:py-16 py-10">
+
+    <div>
+        <div class="flex justify-between items-center">
+            <h1 class="text-white xl:text-8xl md:text-6xl text-5xl font-light">Work</h1>
+
+<a href="#">
+  <button @click="open = true"
+    class="group relative overflow-hidden text-white text-base lg:text-lg border border-white rounded-md py-2 px-6 transition-all duration-300 bg-transparent hover:bg-white focus:outline-none">
+    
+    <!-- Default text -->
+    <span class="transition-opacity duration-300 group-hover:opacity-0">View All</span>
+    
+    <!-- Hover icon -->
+    <span class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+      <i class="fa-solid fa-arrow-right text-black text-xl lg:text-2xl"></i>
+    </span>
+  </button>
+</a>
+
+        </div>
+    </div>
+
+
+ <!-- 1st row cards  -->
+    <div class="flex md:flex-row flex-col justify-center gap-8 lg:pt-16 pt-10">
+        <div class="md:w-1/2 w-full">
+          <a href="https://fantoken.vercel.app/">
+            <div> 
+                <img src="./assets/img/fan2.png" class="w-full hover:scale-[.97] duration-[0.5s]" alt="">
+            </div>
+            </a>
+            <h1 class="button1 lg:text-2xl text-xl">
+                <span class="label-up">FAN TOKENS</span>
+                <span class="label-up">FAN TOKENS</span>
+              </h1>
+            <!-- <p class="text-[#ADADAD] pt-3">Mobile App</p> -->
+        </div>
+        <div class="md:w-1/2 w-full">
+          <a href="https://lonelyfans.vercel.app/index.html">
+            <div>
+                <img src="./assets/img/lof2.png" class="w-full hover:scale-[.97] duration-[0.5s]" alt="">
+            </div>
+            </a>
+          <h1 class="button1 lg:text-2xl text-xl">
+                <span class="label-up">LOF</span>
+                <span class="label-up">LOF</span>
+              </h1>
+            <!-- <p class="text-[#ADADAD] pt-3">Mobile App</p> -->
+        </div>
+    </div>
+
+    <!-- 2nd row cards  -->
+     <div class="flex md:flex-row flex-col justify-center gap-8 lg:pt-16 pt-10">
+        <div class="md:w-1/2 w-full">
+          <a href="https://finux.vercel.app/">
+            <div> 
+                <img src="./assets/img/finux2.png" class="w-full hover:scale-[.97] duration-[0.5s]" alt="">
+            </div>
+            </a>
+           <h1 class="button1 lg:text-2xl text-xl">
+                <span class="label-up">FINUX</span>
+                <span class="label-up">FINUX</span>
+              </h1>
+            <!-- <p class="text-[#ADADAD] pt-3">Mobile App</p> -->
+        </div>
+        <div class="md:w-1/2 w-full">
+          <a href="https://star-models-new.vercel.app/">
+            <div>
+                <img src="./assets/img/starmodel2.png" class="w-full hover:scale-[.97] duration-[0.5s]" alt="">
+            </div>
+            </a>
+           <h1 class="button1 lg:text-2xl text-xl">
+                <span class="label-up">STARS-MODELS</span>
+                <span class="label-up">STARS-MODELS</span>
+              </h1>
+            <!-- <p class="text-[#ADADAD] pt-3">Mobile App</p> -->
+        </div>
+    </div>
+   </section>
+
+   <!-- Services section  -->
+
+ <section id="services" class="bg-[#1A1A1A] xl:px-20 lg:px-10 px-5 xl:py-28 md:py-16 py-10">
+  <div class="flex md:flex-row flex-col justify-between gap-10">
+
+    <div class="md:w-1/2 w-full">
+      <div class="md:sticky top-10">
+        <h1 class="text-white lg:text-8xl text-5xl font-light">Services</h1>
+      </div>
+    </div>
+
+    <!--  Service Blocks -->
+    <div class="md:w-1/2 w-full lg:space-y-10 space-y-8 ">
+      
+      <!-- 1st block -->
+      <div class="bg-[#232323] px-10 py-8">
+        <h3 class="text-white font-light">01</h3>
+        <h1 class="text-white lg:text-5xl text-4xl pt-24">React js</h1>
+        <p class="text-[#ADADAD] lg:text-base text-sm pt-4">I develop dynamic, responsive web applications using React.js, with expertise in component-based architecture and state management.</p>
+      </div>
+
+      <!-- 2nd block -->
+      <div class="bg-[#232323] px-10 py-8">
+        <h3 class="text-white font-light">02</h3>
+        <h1 class="text-white lg:text-5xl text-4xl pt-24">Vue js</h1>
+        <p class="text-[#ADADAD] pt-4 lg:text-base text-sm">I build interactive and efficient web interfaces using Vue.js, leveraging its reactive data binding and component-based structure.</p>
+      </div>
+
+      <!-- 3rd block -->
+      <div class="bg-[#232323] px-10 py-8">
+        <h3 class="text-white font-light">03</h3>
+        <h1 class="text-white lg:text-5xl text-4xl pt-24">Tailwind CSS</h1>
+        <p class="text-[#ADADAD] pt-4 lg:text-base text-sm">I craft modern, responsive UIs with Tailwind CSS, utilizing its utility-first approach for clean, maintainable, and scalable design.</p>
+      </div>
+
+      <!-- 4th block -->
+      <div class="bg-[#232323] px-10 py-8">
+        <h3 class="text-white font-light">04</h3>
+        <h1 class="text-white lg:text-5xl text-4xl pt-24">Bootstrap</h1>
+        <p class="text-[#ADADAD] pt-4 lg:text-base text-sm">Expert in leveraging Bootstrap’s comprehensive framework to create scalable, mobile-first, and visually consistent web interfaces with optimal performance and accessibility</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- testimonials  -->
+
+<section id="testimonial" class="bg-[#1A1A1A] lg:py-32 py-10 ">
+  <h1 class="text-white lg:text-8xl text-5xl text-center pb-10 font-light">Testimonials</h1>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      
+      <!-- Slide -->
+      <div class="swiper-slide bg-[#232323] text-white p-6">
+        <p class="mb-14 xl:text-base text-sm">"Her expertise in React and front-end development helped bring our vision to life with a clean, responsive design."</p>
+        <div class="flex items-center gap-4">
+          <img src="https://i.pravatar.cc/40?img=1" alt="Jordan Smith" class="w-10 h-10 rounded-full bg-orange-600 p-1">
+          <div>
+            <p>Michael Thompson</p>
+            <p class="text-sm text-[#ADADAD]">Stars-Models</p>
+          </div>
+        </div>
+      </div>
+
+       <!-- Slide -->
+      <div class="swiper-slide bg-[#232323] text-white p-6">
+        <p class="mb-14 xl:text-base text-sm">"The UI crafted using Tailwind CSS by Sarah Johnson was not only visually stunning but also highly functional and user-friendly across all devices."</p>
+        <div class="flex items-center gap-4">
+          <img src="https://i.pravatar.cc/40?img=1" alt="Jordan Smith" class="w-10 h-10 rounded-full bg-orange-600 p-1">
+          <div>
+            <p>David Lee</p>
+            <p class="text-sm text-[#ADADAD]">Finux</p>
+          </div>
+        </div>
+      </div>
+
+       <!-- Slide -->
+      <div class="swiper-slide bg-[#232323] text-white p-6">
+        <p class="mb-14 xl:text-base text-sm">"Thanks to Hammad, our website’s responsiveness and accessibility improved dramatically with Bootstrap, making the user experience seamless on every platform."</p>
+        <div class="flex items-center gap-4">
+          <img src="https://i.pravatar.cc/40?img=1" alt="Jordan Smith" class="w-10 h-10 rounded-full bg-orange-600 p-1">
+          <div>
+            <p>Jessica Martinez</p>
+            <p class="text-sm text-[#ADADAD]">LOF</p>
+          </div>
+        </div>
+      </div>
+
+       <!-- Slide -->
+      <div class="swiper-slide bg-[#232323] text-white p-6">
+        <p class="mb-14 xl:text-base text-sm">"Professional, reliable, and innovative. Sarah consistently exceeded expectations by integrating cutting-edge technologies with a strong focus on performance."</p>
+        <div class="flex items-center gap-4 ">
+          <img src="https://i.pravatar.cc/40?img=1" alt="Jordan Smith" class="w-10 h-10 rounded-full bg-orange-600 p-1">
+          <div>
+            <p>James Wilson</p>
+            <p class="text-sm text-[#ADADAD]">Notik me</p>
+          </div>
+        </div>
+      </div>
+
+       <!-- Slide -->
+      <div class="swiper-slide bg-[#232323] text-white p-6">
+        <p class="mb-14 xl:text-base text-sm">"I highly recommend Hammad for any front-end development needs. Her ability to quickly understand project requirements and deliver clean, maintainable code is impressive."</p>
+        <div class="flex items-center gap-4">
+          <img src="https://i.pravatar.cc/40?img=1" alt="Jordan Smith" class="w-10 h-10 rounded-full bg-orange-600 p-1">
+          <div>
+            <p>Olivia Brown</p>
+            <p class="text-sm text-[#ADADAD]">Wingle</p>
+          </div>
+        </div>
+      </div>
+
+       <!-- Slide -->
+      <div class="swiper-slide bg-[#232323] text-white p-6">
+        <p class="mb-14 xl:text-base text-sm">"Highly skilled and detail-oriented developer. Delivered our Vue.js application ahead of schedule with exceptional quality and great communication throughout"</p>
+        <div class="flex items-center gap-4">
+          <img src="https://i.pravatar.cc/40?img=1" alt="Jordan Smith" class="w-10 h-10 rounded-full bg-orange-600 p-1">
+          <div>
+            <p>Jordan Smith</p>
+            <p class="text-sm text-[#ADADAD]">Cry Boot</p>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat for other testimonials -->
+      <!-- Copy and paste the .swiper-slide as needed -->
+
+    </div>
+  </div>
+</section>
+
+<!-- lets create  -->
+
+<section class="bg-[#232323] xl:px-20 lg:px-10 px-5 xl:py-28 md:py-16 py-10">
+    <div>
+        <h1 id="creative-heading" class="text-white font-light xl:text-8xl md:text-6xl text-4xl xl:leading-[110px] md:leading-[75px] leading-[45px] text-center">Let’s create <br>
+something together</h1>
+    </div>
+
+    <div class="flex flex-col lg:flex-row justify-between items-center lg:mt-28 mt-12 gap-10">
+
+      <div class="lg:w-1/2 w-full">
+
+  <h1 class="text-white lg:text-5xl text-3xl font-light">Contact</h1>
+
+  <h3 class="text-white lg:text-xl text-base font-light pt-5">Interest in collaboration? Questions? Write to us, we will get back to you as soon as possible</h3>
+
+  
+  <div class="flex items-center pt-20 space-x-6">
+     <i class="fa-solid fa-envelope text-5xl text-[#D94100]"></i>
+    <div>
+    <h1 class="text-white lg:text-2xl text-lg">Address</h1>
+    <p class="text-base text-[#adadad]">Your concerns and problems are in good hands with us.</p>
+    </div>
+  </div>
+
+
+  <div class="flex items-center pt-20 space-x-8">
+    <i class="fa-solid fa-location-dot text-5xl text-[#D94100]"></i>
+    <div>
+    <h1 class="text-white lg:text-2xl text-lg">E-mail</h1>
+    <a href="mailto:hammadahmad507@gmail.com">
+    <p class="text-base text-[#adadad] hover:underline">hammadahmad507@gmail.com</p>
+    </a>
+    </div>
+  </div>
+
+
+
+  <div class="flex items-center pt-20 space-x-5">
+    <i class="fa-solid fa-tty text-5xl text-[#D94100]"></i>
+    <div>
+    <h1 class="text-white lg:text-2xl text-lg">Telephone</h1> 
+    <a href="tel:+923164902301">
+    <p class="text-base text-[#adadad] hover:underline cursor-pointer">+92 316 4902301</p>
+    </a>
+    </div> 
+  </div>
+  
+
+</div>
+<!-- form  -->
+<div id="contact" class="p-4 lg:w-1/2 w-full">
+    <!-- From Uiverse.io by themrsami --> 
+    <div class="">
+    <!-- <h2 class="text-white font-bold text-lg">Shipping Label Address Form</h2> -->
+
+   <div class="">
+  <!-- <label class="text-white" for="name">Name</label> -->
+  <input 
+    placeholder="Your name" class="w-full bg-transparent border-b-[1px] border-white text-white py-3 mt-2 outline-none focus:outline-none focus:border-white placeholder-[#ADADAD]" type="text" required >
+</div>
+
+
+    <div class="mt-5">
+        <!-- <label class="text-white" for="Email">Email</label> -->
+        <input placeholder="Your Email" class="w-full bg-transparent border-b-[1px] border-white text-white py-3 mt-2 outline-none focus:outline-none focus:border-white placeholder-[#ADADAD]" type="email">
+    </div>
+
+     <div class="mt-5">
+        <!-- <label class="text-white" for="address">Address</label> -->
+        <input placeholder="Your Address" class="w-full bg-transparent border-b-[1px] border-white text-white py-3 mt-2 outline-none focus:outline-none focus:border-white placeholder-[#ADADAD]" type="address">
+    </div>
+
+    <div class="mt-5 flex flex-col">
+       <!-- <label class="text-white " for="address">Message</label> -->
+      <textarea name="message" id="message" placeholder="Message" cols="" rows="6" class="w-full bg-transparent border-b-[1px] border-white text-white py-3 mt-2 outline-none focus:outline-none focus:border-white placeholder-[#ADADAD]"></textarea>
+    </div>
+
+    <div class="lg:pt-16 pt-10">
+        <a href="">
+        <button class="button2 text-white lg:text-lg text-base bg-[#D94100] border border-[#D94100] py-2 px-5 rounded-md">Send</button>
+        </a>
+    </div>
+ 
+      </div>
+   </div>
+   </div>
+    
+</section>
+
+
+<!-- footer  -->
+<footer class="bg-[#232323] xl:px-20 lg:px-10 px-5 pt-10">
+    <div class="text-white lg:text-base text-sm text-center space-x-5 pb-10">
+        <a href=""><i class="fa-brands fa-square-facebook text-3xl"></i></a>
+         <a href=""><i class="fa-brands fa-square-instagram text-3xl"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin text-3xl"></i></a>
+          <a href=""><i class="fab fa-fiverr text-white text-3xl"></i></a>
+    </div>
+    <hr>
+    <div class="flex md:flex-row flex-col md:justify-between justify-center py-6">
+        <div>
+        <p class="text-[#ADADAD] text-xs md:text-start text-center">Juan Simmons. Web Designer</p>
+        </div>
+       <div class="text-[#ADADAD] text-xs text-center space-x-10 md:pt-0 pt-5">
+        <a href="">Style Guide</a>
+         <a href="">Licences</a>
+          <a href="">Changelog</a>
+    </div>
+    </div>
+</footer>
+
+
+<!-- up button  -->
+  <button 
+  x-data="{ show: false }"
+  x-init="window.addEventListener('scroll', () => show = window.scrollY > 300)"
+  x-show="show"
+  @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+  class="fixed bottom-6 right-6 z-50 bg-white text-black p-3 rounded-full shadow-lg hover:bg-[#adadad] transition-all duration-300"
+  aria-label="Scroll to top"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+ <!-- Modal -->
+  <div x-show="open" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-100 z-50"
+       x-transition>
+    <div class="bg-transparent w-full  p-5 rounded-lg relative">
+      <!-- Close button -->
+      <button @click="open = false" class="absolute top-2 right-2 text-white text-4xl">&times;</button>
+
+      <!-- Swiper Slider -->
+      <!-- <div class="swiper mt-6 cursor-pointer">
+        <div class="swiper-wrapper">
+
+          
+          <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://lonelyfans.vercel.app/index.html">
+              <img src="./assets/img/lof2.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+        
+          
+          <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://do-media.vercel.app/">
+              <img src="./assets/img/do.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+
+         <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://crybot-three.vercel.app/">
+              <img src="./assets/img/cryboot.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+          <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://wingle-eight.vercel.app/">
+              <img src="./assets/img/wingle.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+          <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://notik-homepage.vercel.app/">
+              <img src="./assets/img/notikme.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+            <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://novathestudio.com/">
+              <img src="./assets/img/NOVA.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+           <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://theriss.net/">
+              <img src="./assets/img/riss.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+          <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://rent-spaze.vercel.app/">
+              <img src="./assets/img/rent.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+
+          <div class="swiper-slide rounded-lg text-center  transition"> 
+            <a href="https://star-models-new.vercel.app/">
+              <img src="./assets/img/starmodel2.png" class="rounded-xl" alt="">
+            </a>
+          </div>
+          
+        </div>
+      </div> -->
+    
+    
+      <div class="testimonials lg:pt-20 pt-10">
+
+           <div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="customers-testimonials" class="owl-carousel">
+  
+              <!--project 1 -->
+              <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://lonelyfans.vercel.app/index.html">
+                  <img src="./assets/img/lof2.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+
+              <!--project 3 -->
+             <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://notik-homepage.vercel.app/">
+                  <img src="./assets/img/notikme.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+           
+              <!-- project 4 -->
+             <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://novathestudio.com/">
+                  <img src="./assets/img/NOVA.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+          
+              <!--project 5 -->
+           <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://wingle-eight.vercel.app/">
+                  <img src="./assets/img/wingle.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+
+            <!--project 6 -->
+            <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://rent-spaze.vercel.app/">
+                  <img src="./assets/img/rent.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+              <!--project 7 -->
+              <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://do-media.vercel.app/">
+                  <img src="./assets/img/do.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+                <!--project 8 -->
+              <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://theriss.net/">
+                  <img src="./assets/img/riss.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+
+               <!--project 9 -->
+              <div class="item w-full">
+                <div class="shadow-effect p-8">
+                  <div>
+                    <a href="https://crybot-three.vercel.app/">
+                  <img src="./assets/img/cryboot.png" alt=""> 
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+           </div>
+         <div class="flex justify-center space-x-4 mt-5 2xl:px-20 lg:px-10 px-10">
+      <button class="prev-btn bg-transparent border border-white text-white px-4 py-2 rounded-lg transition">← </button>
+      <button class="next-btn bg-transparent border border-white text-white px-4 py-2 rounded-lg transition">→</button>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pop up js  -->
+
+    <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('modalSlider', () => ({
+        open: false,
+        init() {
+          let swiper;
+          this.$watch('open', (value) => {
+            if (value) {
+              swiper = new Swiper('.swiper', {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                  delay: 0,
+                  disableOnInteraction: false,
+                },
+                speed: 3000,
+              });
+
+              const swiperEl = document.querySelector('.swiper');
+              swiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
+              swiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
+            }
+          });
+        }
+      }))
+    });
+  </script>
+
+<!-- hero heading script -->
+<script>
+  // Animate heading on page load
+  gsap.from("#hero-heading span", {
+    y: 50,
+    opacity: 0,
+    duration: 3,
+    stagger: 0.5,
+    ease: "power4.out"
+  });
+
+  // Animate image on hover
+  const img = document.getElementById("profile-img");
+
+  img.addEventListener("mouseenter", () => {
+    gsap.to(img, {
+      scale: 1.2,
+      rotate: 5,
+      duration: 0.4,
+      ease: "power2.out"
+    });
+  });
+
+  img.addEventListener("mouseleave", () => {
+    gsap.to(img, {
+      scale: 1,
+      rotate: 0,
+      duration: 0.4,
+      ease: "power2.inOut"
+    });
+  });
+
+  // Animate "Hire me" button on load (optional)
+  gsap.from(".button2", {
+    scale: 0.8,
+    opacity: 0,
+    delay: 1,
+    duration: 0.5,
+    ease: "back.out(1.7)"
+  });
+</script>
+
+
+<!-- lets create script -->
+<script>
+  // Split the heading into characters
+  const heading = new SplitType('#creative-heading', { types: 'chars' });
+
+  // Register ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate on scroll
+  gsap.from(heading.chars, {
+    scrollTrigger: {
+      trigger: '#creative-heading',
+      start: 'top 80%',  // when heading enters 80% from top of viewport
+      toggleActions: 'play none none none' // play once
+    },
+    y: 60,
+    opacity: 0,
+    stagger: 0.02,
+    ease: "power4.out",
+    duration: 1
+  });
+</script>
+
+<!-- slider testimonials bottom -->
+<script>
+  const swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+      1280: {
+        slidesPerView: 4,
+      },
+    },
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+  });
+</script>
+
+  <!--owl slider js -->
+
+   <script>
+    jQuery(document).ready(function($) {
+      "use strict";
+  
+      var owl = $('#customers-testimonials');
+  
+      owl.owlCarousel({
+        loop: true,
+        center: true,
+        items: 3,
+        margin: 0,
+        autoplay: true,
+        dots: true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1770: {
+            items: 3
+          }
+        }
+      });
+  
+      // 👇 Custom Next and Prev Button Actions
+      $('.next-btn').click(function() {
+        owl.trigger('next.owl.carousel');
+      });
+  
+      $('.prev-btn').click(function() {
+        owl.trigger('prev.owl.carousel');
+      });
+    });
+  </script>
+
+ <!-- smooth animation  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@latest"></script>
+<script>
+  const lenis = new Lenis({
+    duration: 1.2, // Adjust smoothness
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
+    smooth: true,
+    smoothTouch: false
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+</script>
+
+<script src="https://kit.fontawesome.com/a2ada4947c.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
